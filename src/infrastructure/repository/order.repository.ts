@@ -1,13 +1,11 @@
-import {OrderModel} from "../db/model/order.model";
-import {AppDataSource} from "../db/datasource";
-import { IOrderRepository } from "../../domain/order/order.repository";
 import {Repository} from "typeorm";
+import {AppDataSource} from "../db/datasource";
+import {OrderModel} from "../db/model/order.model";
 import {Order} from "../../domain/order/order.entity";
+import {IOrderRepository} from "../../domain/order/order.repository";
 import {OrderMapper} from "../../domain/order/order.mapper";
 
-
 export class OrderRepository implements IOrderRepository {
-
     private repo: Repository<OrderModel>;
 
     constructor() {
@@ -15,11 +13,8 @@ export class OrderRepository implements IOrderRepository {
     }
 
     async save(order: Order): Promise<Order> {
-        const persistence = OrderMapper.toPersistence(order);
-
-        const savedModel = await this.repo.save(
-            this.repo.create(persistence)
-        );
+        const model = this.repo.create(OrderMapper.toPersistence(order));
+        const savedModel = await this.repo.save(model);
 
         return OrderMapper.toDomain(savedModel);
     }
