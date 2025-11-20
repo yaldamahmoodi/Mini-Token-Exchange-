@@ -1,4 +1,4 @@
-import { OrderStatus } from "./order-status.enum";
+import {OrderStatus} from "./order-status.enum";
 import {OrderDomainError} from "./order-domain-error";
 
 export class Order {
@@ -10,24 +10,12 @@ export class Order {
         public amount: number,
         public status: OrderStatus = OrderStatus.PENDING
     ) {
-        this.validate();
+        this.validateBusinessRules();
     }
 
-    private validate() {
-        if (!this.userId) {
-            throw new OrderDomainError("Order must have a userId.");
-        }
-
-        if (!this.originToken) {
-            throw new OrderDomainError("Order must specify an origin token.");
-        }
-
-        if (!this.destinationToken) {
-            throw new OrderDomainError("Order must specify a destination token.");
-        }
-
-        if (this.amount <= 0) {
-            throw new OrderDomainError("Order amount must be greater than 0.");
+    private validateBusinessRules() {
+        if (this.amount <= 1) {
+            throw new OrderDomainError("Order amount must be greater than 1");
         }
     }
 
