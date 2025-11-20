@@ -1,13 +1,14 @@
 import {OrderModel} from "../../infrastructure/db/model/order.model";
+import {Order} from "./order.entity";
 
 export class OrderMapper {
     static toPersistence(order: Order): Partial<OrderModel> {
         return {
-            id: order.id,
+            id: order.id || undefined,
             userId: order.userId,
             originToken: order.originToken,
             destinationToken: order.destinationToken,
-            amount: order.amount.toString(),
+            amount: order.amount,
             status: order.status,
         }
     }
