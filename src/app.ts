@@ -8,9 +8,8 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(apiLimiter);
 
-app.use("/orders", orderRoutes);
+app.use("/orders", apiLimiter, orderRoutes);
 
 app.get("/", (req, res) => {
     res.send("Server is running");
