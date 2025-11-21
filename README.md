@@ -52,6 +52,6 @@ The server will start on http://localhost:3000.
 - synchronize: true in TypeORM is used for local development convenience but should be disabled in production to avoid accidental schema changes.
 - MockBroker simulates event publishing but does not provide real message queue persistence, chosen for simplicity and faster testing.
 - Input validation uses zod for type-safe and runtime checks, ensuring stable API behavior.
-- Rate limiting and advanced security measures are not implemented to focus on core functional requirements; these should be added for production readiness.
+- Rate limiting is implemented on /orders to prevent abuse, but advanced security features like authentication, authorization, and HTTPS enforcement are not implemented.
 - The architecture prioritizes clean separation of concerns (Domain, Application, Infrastructure), modularity, and SOLID principles, allowing easy extension of features like adding more entities or services.
 
