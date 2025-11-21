@@ -8,7 +8,7 @@ Mini-Token-Exchange is a simplified cryptocurrency exchange backend built with N
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Mini-Token-Exchange.git
+git clone https://github.com/yaldamahmoodi/Mini-Token-Exchange.git
 ```
 ### 2. Install dependencies:
 ````
