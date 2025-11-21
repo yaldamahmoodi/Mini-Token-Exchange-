@@ -1,4 +1,3 @@
-// src/app.ts
 import express from "express";
 import dotenv from "dotenv";
 import orderRoutes from "./routes/order/order.routes";
