@@ -24,8 +24,18 @@ export class OrderRepository implements IOrderRepository {
         return model ? OrderMapper.toDomain(model) : null;
     }
 
-    async getAll(): Promise<Order[]> {
-        const models = await this.repo.find();
+    async findFiltered(filters: { userId?: string; status?: string }): Promise<Order[]> {
+        const query = this.repo.createQueryBuilder("order");
+
+        if (filters.userId) {
+            query.andWhere("order.userId = :userId", { userId: filters.userId });
+        }
+
+        if (filters.status) {
+            query.andWhere("order.status = :status", { status: filters.status });
+        }
+
+        const models = await query.getMany();
         return models.map(OrderMapper.toDomain);
     }
 }
