@@ -52,8 +52,14 @@ export class OrderController {
     async getFilteredOrders(req: Request, res: Response) {
         try {
             const query = getOrdersQuerySchema.parse(req.query);
-            const orders = await this.getFilteredOrdersUseCase.execute(query);
-            return res.status(200).json(orders);
+            const {orders, total} = await this.getFilteredOrdersUseCase.execute(query);
+            return res.status(200).json({
+                data: orders,
+                total,
+                page: query.page,
+                limit: query.limit,
+                totalPages: Math.ceil(total / query.limit),
+            });
         } catch (err: any) {
             return handleError(err, res);
         }

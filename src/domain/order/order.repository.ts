@@ -5,5 +5,5 @@ export interface IOrderRepository {
 
     findById(id: string): Promise<Order | null>;
 
-    findFiltered(filters: { userId?: string; status?: string }): Promise<Order[]>;
+    findFiltered(filters: { userId?: string; status?: string }): Promise<{ orders: Order[], total: number }>;
 }
