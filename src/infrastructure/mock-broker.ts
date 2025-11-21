@@ -12,8 +12,3 @@ export class MockBroker {
         return this.events;
     }
 }
-
-//  TODO: event overflow
-// get last event
-// handle push bug
-// queue structure
