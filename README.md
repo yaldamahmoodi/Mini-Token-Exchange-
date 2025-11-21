@@ -5,16 +5,16 @@ Mini-Token-Exchange is a simplified cryptocurrency exchange backend built with N
 
 ## Setup Instructions
 
-1. Clone the repository:
+#### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/yaldamahmoodi/Mini-Token-Exchange.git
 ```
-### 2. Install dependencies:
+#### 2. Install dependencies:
 ````
 npm install
 ````
-### 3.Configure environment variables by creating a .env file in the root:
+#### 3.Configure environment variables by creating a .env file in the root:
 
 DB_HOST=
 DB_PORT=
@@ -23,12 +23,12 @@ DB_PASSWORD=
 DB_NAME=
 PORT=
 
-### 4.Run the application in development mode:
+#### 4.Run the application in development mode:
 ````
 npm run dev
 ````
 
-### 5.To run tests:
+#### 5.To run tests:
 
 ````
 npm test
